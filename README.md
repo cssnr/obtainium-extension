@@ -1,4 +1,9 @@
+[![Chrome Web Store Users](https://img.shields.io/chrome-web-store/users/xxxchromexxx?logo=google&logoColor=white&label=users)](https://chromewebstore.google.com/detail/obtainium-extension/xxxchromexxx)
+[![Mozilla Add-on Users](https://img.shields.io/amo/users/obtainium-extension?logo=mozilla&label=users)](https://addons.mozilla.org/addon/obtainium-extension)
+[![GitHub Downloads](https://img.shields.io/github/downloads/cssnr/obtainium-extension/total?logo=github)](https://github.com/cssnr/obtainium-extension/releases/latest)
 [![GitHub Repo Stars](https://img.shields.io/github/stars/cssnr/obtainium-extension?style=flat&logo=github)](https://github.com/cssnr/obtainium-extension/stargazers)
+[![Chrome Web Store Version](https://img.shields.io/chrome-web-store/v/xxxchromexxx?label=chrome&logo=googlechrome)](https://chromewebstore.google.com/detail/obtainium-extension/xxxchromexxx)
+[![Mozilla Add-on Version](https://img.shields.io/amo/v/obtainium-extension?label=firefox&logo=firefox)](https://addons.mozilla.org/addon/obtainium-extension)
 [![GitHub Release Version](https://img.shields.io/github/v/release/cssnr/obtainium-extension?logo=github)](https://github.com/cssnr/obtainium-extension/releases/latest)
 [![Build](https://img.shields.io/github/actions/workflow/status/cssnr/obtainium-extension/build.yaml?logo=github&label=build)](https://github.com/cssnr/obtainium-extension/actions/workflows/build.yaml)
 [![Test](https://img.shields.io/github/actions/workflow/status/cssnr/obtainium-extension/test.yaml?logo=github&label=test)](https://github.com/cssnr/obtainium-extension/actions/workflows/test.yaml)
@@ -11,22 +16,33 @@
 
 # Obtainium Extension
 
-Modern Web Extension and Firefox Android Addon for automatically
-generating QR Codes and Deep Links to Obtainium for supported sites.
+Modern **Web Extension** and **Firefox Android** Addon for automatically
+generating QR Codes and Deep Links to Obtainium supported sites.
 
-- [Download](#download)
+- [Install](#Install)
 - [Features](#features)
   - [Upcoming](#upcoming)
-- [Configuration](#configuration)
 - [Support](#support)
 - [Development](#development)
 - [Contributing](#Contributing)
 
-## Download
+## Install
 
-> [!WARNING]  
-> Until published you must manually install a
-> [GitHub Release](https://github.com/cssnr/obtainium-extension/releases/latest).
+- [Google Chrome Web Store](https://chromewebstore.google.com/detail/obtainium-extension/xxxchromexxx)
+- [Mozilla Firefox Add-ons](https://addons.mozilla.org/addon/obtainium-extension)
+
+[![Chrome](https://raw.githubusercontent.com/smashedr/logo-icons/master/browsers/chrome_48.png)](https://chromewebstore.google.com/detail/obtainium-extension/xxxchromexxx)
+[![Firefox](https://raw.githubusercontent.com/smashedr/logo-icons/master/browsers/firefox_48.png)](https://addons.mozilla.org/addon/obtainium-extension)
+[![Edge](https://raw.githubusercontent.com/smashedr/logo-icons/master/browsers/edge_48.png)](https://chromewebstore.google.com/detail/obtainium-extension/xxxchromexxx)
+[![Opera](https://raw.githubusercontent.com/smashedr/logo-icons/master/browsers/opera_48.png)](https://chromewebstore.google.com/detail/obtainium-extension/xxxchromexxx)
+[![Brave](https://raw.githubusercontent.com/smashedr/logo-icons/master/browsers/brave_48.png)](https://chromewebstore.google.com/detail/obtainium-extension/xxxchromexxx)
+[![Chromium](https://raw.githubusercontent.com/smashedr/logo-icons/master/browsers/chromium_48.png)](https://chromewebstore.google.com/detail/obtainium-extension/xxxchromexxx)
+[![Yandex](https://raw.githubusercontent.com/smashedr/logo-icons/master/browsers/yandex_48.png)](https://chromewebstore.google.com/detail/obtainium-extension/xxxchromexxx)
+
+All **Chromium** Based Browsers can install the extension from the
+[Chrome Web Store](https://chromewebstore.google.com/detail/obtainium-extension/xxxchromexxx).
+
+Mobile browser support available for [Firefox Android](https://addons.mozilla.org/addon/obtainium-extension).
 
 ## Features
 
@@ -38,9 +54,17 @@ generating QR Codes and Deep Links to Obtainium for supported sites.
 
 - Opens Directly in Obtainium on Activation
 
+### Supported Sites
+
+- https://github.com
+- https://gitlab.com
+- https://forgejo.org
+- https://codeberg.org
+
 ### Upcoming
 
-- Option to insert Obtainium button into site
+- Add support for additional Obtainium supported sites
+- Option to insert `Get on Obtainium` button into supported sites
 
 > [!TIP]
 > Don't see your feature here?
