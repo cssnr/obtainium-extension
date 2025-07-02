@@ -6,11 +6,7 @@ chrome.runtime.onInstalled.addListener(onInstalled)
 chrome.runtime.onStartup.addListener(onStartup)
 chrome.contextMenus?.onClicked.addListener(onClicked)
 chrome.commands?.onCommand.addListener(onCommand)
-chrome.runtime.onMessage.addListener(onMessage)
 chrome.storage.onChanged.addListener(onChanged)
-// chrome.tabs.onUpdated.addListener(onUpdated)
-
-let latestData
 
 /**
  * On Installed Callback
@@ -60,7 +56,7 @@ async function onInstalled(details) {
     const platform = await chrome.runtime.getPlatformInfo()
     console.debug('platform:', platform)
 
-    // TODO: These are currently more trouble than worth...
+    // TODO: This only disables the popup but it still shows as active...
     // if (chrome.declarativeContent) {
     //     addPageRules()
     // }
@@ -128,21 +124,6 @@ async function onCommand(command, tab) {
         chrome.runtime.openOptionsPage()
     } else {
         console.error(`Unknown Command: ${command}`)
-    }
-}
-
-/**
- * On Message Callback
- * @function onMessage
- * @param {Object} message
- * @param {MessageSender} sender
- * @param {Function} sendResponse
- */
-function onMessage(message, sender, sendResponse) {
-    console.debug('sw: onMessage:', message, sender)
-    // const tabId = message.tabId || sender.tab?.id
-    if ('getData' in message) {
-        return sendResponse(latestData)
     }
 }
 
@@ -245,31 +226,6 @@ async function setDefaultOptions(defaultOptions) {
     }
     return options
 }
-
-// /**
-//  * On Updated Callback
-//  * @function onUpdated
-//  * @param {number} tabId
-//  * @param {chrome.tabs.TabChangeInfo} changeInfo
-//  * @param {chrome.tabs.Tab} tab
-//  */
-// function onUpdated(tabId, changeInfo, tab) {
-//     // console.debug(`tabs.onUpdated: ${tabId}:`, changeInfo, tab)
-//     if (!changeInfo.url) return
-//     console.debug(`changeInfo.url:`, changeInfo.url)
-//     if (changeInfo.url === 'about:newtab') return
-//     const message = {
-//         type: 'onUpdated',
-//         changeInfo: changeInfo,
-//         tab: tab,
-//     }
-//     chrome.runtime.sendMessage(message, (response) => {
-//         console.debug(`response:`, response)
-//         if (chrome.runtime.lastError) {
-//             console.warn('sendMessage:', chrome.runtime.lastError.message)
-//         }
-//     })
-// }
 
 // function addPageRules() {
 //     const pageUrlFilters = [
