@@ -1,0 +1,51 @@
+{
+  "commands": {
+    "_execute_page_action": {
+      "suggested_key": {
+        "default": "Alt+Shift+A"
+      },
+      "description": "Open Popup"
+    }
+  },
+  "sidebar_action": {
+    "default_panel": "html/sidepanel.html",
+    "default_title": "Obtainium Extension",
+    "open_at_install": false,
+    "default_icon": {
+      "16": "images/logo16.png",
+      "32": "images/logo32.png",
+      "48": "images/logo48.png",
+      "96": "images/logo96.png",
+      "128": "images/logo128.png"
+    }
+  },
+  "background": {
+    "scripts": ["js/service-worker.js"]
+  },
+  "page_action": {
+    "default_popup": "html/popup.html",
+    "default_title": "Obtainium Extension",
+    "default_icon": {
+      "16": "images/logo16.png",
+      "32": "images/logo32.png",
+      "48": "images/logo48.png",
+      "96": "images/logo96.png",
+      "128": "images/logo128.png"
+    },
+    "show_matches": [
+      "*://github.com/*/*",
+      "*://gitlab.com/*/*",
+      "*://forgejo.org/*/*",
+      "*://codeberg.org/*/*"
+    ]
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "obtainium-extension@cssnr.com",
+      "strict_min_version": "112.0"
+    },
+    "gecko_android ": {
+      "strict_min_version": "120.0"
+    }
+  }
+}

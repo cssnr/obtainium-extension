@@ -1,0 +1,39 @@
+{
+  "name": "Obtainium Extension",
+  "description": "Obtainium Extension.",
+  "homepage_url": "https://github.com/cssnr/obtainium-extension",
+  "author": "Shane",
+  "version": "0.0.1",
+  "manifest_version": 3,
+  "permissions": [
+    "activeTab",
+    "clipboardWrite",
+    "contextMenus",
+    "scripting",
+    "storage"
+  ],
+  "optional_permissions": ["tabs"],
+  "background": { "type": "module" },
+  "options_ui": {
+    "page": "html/options.html",
+    "open_in_tab": true
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["/images/*"],
+      "matches": ["*://*/*"]
+    }
+  ],
+  "commands": {
+    "openOptions": {
+      "description": "Open Options"
+    }
+  },
+  "icons": {
+    "16": "images/logo16.png",
+    "32": "images/logo32.png",
+    "48": "images/logo48.png",
+    "96": "images/logo96.png",
+    "128": "images/logo128.png"
+  }
+}

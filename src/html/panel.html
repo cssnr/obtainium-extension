@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en" class="h-100">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Obtainium Extension Panel</title>
+    <link rel="icon" href="../images/favicon.ico" sizes="any">
+    <link rel="stylesheet" type="text/css" href="../dist/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../dist/fontawesome/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <script type="text/javascript" src="../js/theme.js"></script>
+</head>
+<body class="d-flex flex-column h-100">
+
+<header class="flex-shrink-0">
+<div class="container-fluid">
+    <div class="d-flex flex-row align-items-center justify-content-center">
+        <img alt="logo" class="me-2" src="/images/logo32.png" height="32" width="32">
+        <h1>Obtainium Extension</h1>
+    </div>
+</div>
+</header>
+
+<main class="flex-grow-1">
+<div class="container-fluid p-2">
+
+    <label for="hostname" class="sr-only">QR Code URL</label>
+    <input id="hostname" class="form-control text-center d-inline-block w-100" placeholder="Enter Text to Generate a Code" />
+
+    <div id="qr-code" class="w-100 text-center mt-2"></div>
+
+</div>
+</main>
+
+<footer class="flex-shrink-0">
+<div class="container-fluid p-2">
+    <div class="row m-0">
+        <div class="col-12">
+            <a class="btn btn-outline-warning hvr-grow-sm float-end mt-auto close-panel" role="button">
+                Close Window <i class="fa-regular fa-circle-xmark ms-1"></i></a>
+        </div>
+    </div>
+</div>
+</footer>
+
+<script type="text/javascript" src="../dist/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../dist/bootstrap/bootstrap.bundle.min.js"></script>
+<script type="module" src="../js/panel.js"></script>
+
+</body>
+</html>

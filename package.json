@@ -1,0 +1,39 @@
+{
+  "name": "obtainium-extension",
+  "scripts": {
+    "postinstall": "npx gulp",
+    "lint:eslint": "npx eslint src/js tests",
+    "lint:web-ext": "npm run manifest:firefox && npx web-ext lint --source-dir ./src/ --ignore-files dist/**",
+    "lint": "npm run lint:eslint && npm run lint:web-ext",
+    "test": "npm run manifest:test && node tests/test.js",
+    "chrome": "npm run manifest:chrome && web-ext run --source-dir ./src/ --target=chromium",
+    "firefox": "npm run manifest:firefox && web-ext run --source-dir ./src/",
+    "manifest:chrome": "npx json-merger -p --am concat -o src/manifest.json manifest.json manifest-chrome.json",
+    "manifest:firefox": "npx json-merger -p --am concat -o src/manifest.json manifest.json manifest-firefox.json",
+    "manifest:test": "npx json-merger -p --am concat -o src/manifest.json manifest.json manifest-chrome.json tests/manifest-test.json",
+    "build:chrome": "npm run manifest:chrome && npx web-ext build -n {name}-chrome-{version}.zip -o -s src",
+    "build:firefox": "npm run manifest:firefox && npx web-ext build -n {name}-firefox-{version}.zip -o -s src",
+    "build": "npm run build:chrome && npm run build:firefox",
+    "prettier": "npx prettier --check ."
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.7.2",
+    "@melloware/coloris": "^0.25.0",
+    "bootstrap": "^5.3.7",
+    "clipboard": "^2.0.11",
+    "jquery": "^3.7.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.30.0",
+    "@types/chrome": "^0.0.328",
+    "eslint": "^9.30.0",
+    "gulp": "^5.0.1",
+    "gulp-download2": "^1.1.0",
+    "gulp-rename": "^2.1.0",
+    "json-merger": "^3.0.0",
+    "prettier": "^3.6.2",
+    "puppeteer": "^24.11.1",
+    "qr-code-styling": "^1.9.2",
+    "web-ext": "^8.8.0"
+  }
+}

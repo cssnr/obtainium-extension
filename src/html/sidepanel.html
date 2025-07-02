@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en" class="vh-100">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Obtainium Extension Side Panel</title>
+    <link rel="icon" href="../images/favicon.ico" sizes="any">
+    <link rel="stylesheet" type="text/css" href="../dist/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../dist/fontawesome/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <script type="text/javascript" src="../js/theme.js"></script>
+</head>
+<body class="d-flex flex-column h-100">
+
+<header class="flex-shrink-0">
+    <div class="container-fluid p-2">
+        <div class="d-flex flex-row align-items-center">
+            <div class="dropdown">
+                <a class="link-body-emphasis text-decoration-none" id="bs-theme-dropdown" title="Theme Switcher" role="button" data-bs-toggle="dropdown" aria-expanded="false" href="#">
+                    <i id="theme-icon" class="fa-solid fa-circle-half-stroke fa-lg" style="min-width: 20px;"></i> <i class="fa-solid fa-caret-down fa-xs mx-1"></i></a>
+                <ul class="dropdown-menu auto dropdown-menu-end" aria-labelledby="bs-theme-dropdown">
+                    <li><button class="dropdown-item" data-bs-theme-value="dark" aria-pressed="false">
+                        <i class="fa-regular fa-moon" style="min-width: 16px;"></i> <span class="ms-3">Dark</span></button></li>
+                    <li><button class="dropdown-item" data-bs-theme-value="light" aria-pressed="false">
+                        <i class="fa-solid fa-sun" style="min-width: 16px;"></i> <span class="ms-3">Light</span></button></li>
+                    <li><button class="dropdown-item" data-bs-theme-value="auto" aria-pressed="false">
+                        <i class="fa-solid fa-circle-half-stroke" style="min-width: 16px;"></i> <span class="ms-3">Auto</span></button></li>
+                </ul>
+            </div>
+
+            <div class="flex-fill text-center">
+                <a class="link-body-emphasis text-decoration-none fs-4" title="Home Page" href="homepage_url">
+                    <img src="../images/logo32.png" alt="Logo" class="mb-1" style="height: 1.1em;">
+                    Obtainium</a>
+                <a class="link-body-emphasis text-decoration-none small" title="Release Notes" href="version_url">
+                    v<span class="version"></span></a>
+            </div>
+
+            <div class="" data-mobile-add="d-none">
+                <a class="btn btn-sm btn-outline-info open-popup" role="button" title="Side Panel">
+                    <i class="fa-solid fa-window-maximize"></i></a>
+            </div>
+            <div class="ms-2">
+                <a class="btn btn-sm btn-outline-info" role="button" href="../html/options.html" title="Options">
+                    <i class="fa-solid fa-gears"></i></a>
+            </div>
+        </div> <!-- d-flex -->
+    </div> <!-- container-fluid -->
+</header>
+
+<hr class="my-0">
+
+<main class="flex-grow-1 p-2">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <kbd id="hostname" class="text-center text-ellipsis d-inline-block w-100">No URL for Tab</kbd>
+
+                <div id="qr-code" class="w-100 text-center mt-2"></div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer class="flex-shrink-0 p-2">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <!--<div class="d-none grant-perms mb-2">-->
+
+                <!--    <div class="alert alert-warning text-center p-1" role="alert">-->
+                <!--        Panel Requires Permissions-->
+                <!--    </div>-->
+
+                <!--    <button class="btn btn-sm btn-success w-100 hvr-grow-sm mb-2 grant-permissions" type="button"-->
+                <!--            data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover"-->
+                <!--            data-bs-title="Tab Permissions Grant Additional Functionality.">-->
+                <!--        <i class="fa-solid fa-check-double me-1"></i> Grant Tab Permissions</button>-->
+
+                <!--    <p class="text-center"><a href="../html/permissions.html" class="">-->
+                <!--        More Information on Permissions</a></p>-->
+                <!--</div> &lt;!&ndash; grant-perms &ndash;&gt;-->
+
+                <a class="btn btn-outline-warning hvr-grow-sm w-100 close-panel" role="button">
+                    Close Side Panel <i class="fa-regular fa-circle-xmark ms-1"></i></a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<div aria-live="polite" aria-atomic="true" class="">
+    <div id="toast-container" class="toast-container bottom-0 end-0 p-3"></div>
+</div> <!-- toast -->
+
+<div id="clone" class="d-none">
+    <div class="toast align-items-center border-0" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="6000">
+        <div class="d-flex">
+            <div class="toast-body text-break small"></div>
+        </div>
+    </div>
+</div> <!-- clone -->
+
+<script type="text/javascript" src="../dist/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../dist/bootstrap/bootstrap.bundle.min.js"></script>
+<script type="module" src="../js/sidepanel.js"></script>
+
+</body>
+</html>

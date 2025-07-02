@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en" class="h-100">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Obtainium Extension Options</title>
+    <link rel="icon" href="../images/favicon.ico" sizes="any">
+    <link rel="stylesheet" type="text/css" href="../dist/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../dist/fontawesome/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="../dist/coloris/coloris.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <link rel="stylesheet" type="text/css" href="../css/options.css">
+    <script type="text/javascript" src="../js/theme.js"></script>
+</head>
+<body class="h-100">
+
+<div class="d-flex align-items-center justify-content-center p-1 p-sm-3 h-100 w-100">
+<div class="m-auto pb-4 w-100">
+<div id="options-wrapper" class="border border-1 rounded rounded-3 p-2 p-sm-3 m-auto w-100" style="max-width: 767px;">
+
+    <div class="d-flex flex-row justify-content-center align-items-center">
+        <img src="../images/logo48.png" class="me-2" height="48" width="48" alt="Obtainium Extension" title="Obtainium Extension">
+        <div>
+            <a class="link-body-emphasis text-decoration-none fs-1" title="Home Page" href="homepage_url" target="_blank" rel="nofollow">
+                Obtainium Extension</a>
+            <a class="link-body-emphasis text-decoration-none small ms-2" title="Release Notes" href="version_url" target="_blank" rel="nofollow">
+                v<span class="version"></span></a>
+        </div>
+    </div> <!-- header -->
+
+    <div data-mobile-add="d-none">
+    <div class="d-flex flex-row align-items-center justify-content-center">
+        <hr class="w-100 my-0"><span class="text-nowrap mx-2">Keyboard Shortcuts</span><hr class="w-100 my-0">
+    </div>
+
+    <table id="keyboard-shortcuts" class="table table-sm table-borderless table-hover d-none">
+        <caption class="visually-hidden">Keyboard Shortcuts</caption>
+        <thead class="visually-hidden"><tr><th>Description</th><th>Shortcut</th></tr></thead>
+        <tbody></tbody>
+        <tfoot class="d-none">
+        <tr>
+            <td class="bg-transparent"><i class="fa-regular fa-keyboard me-1"></i> <span class="description"></span></td>
+            <td class="bg-transparent text-end" title="Keyboard Shortcut"><kbd>Unknown</kbd></td>
+        </tr>
+        </tfoot>
+    </table> <!-- keyboard-shortcuts -->
+
+    <div class="mb-2">
+        Manage Keyboard Shortcuts:
+        <a class="text-decoration-none d-inline-block d-none firefox" href="https://support.mozilla.org/en-US/kb/manage-extension-shortcuts-firefox" target="_blank" rel="noopener">
+            https://mzl.la/3Qwp5QQ <i class="fa-solid fa-arrow-up-right-from-square fa-xs"></i></a>
+        <a id="chrome-shortcuts" class="d-inline-block d-none chrome" role="button">chrome://extensions/shortcuts</a>
+    </div>
+    </div> <!-- data-mobile-add -->
+
+    <div class="d-flex flex-row align-items-center justify-content-center">
+        <hr class="w-100 my-0"><span class="text-nowrap mx-2">Extension Options</span><hr class="w-100 my-0">
+    </div>
+
+    <form class="options">
+        <!--<div class="row mb-2">-->
+        <!--    <div class="col-12 col-sm-8 mb-2">-->
+        <!--        <label for="testInput" class="form-label"><i class="fa-regular fa-keyboard me-1"></i> Test Input</label>-->
+        <!--        <i class="fa-solid fa-circle-info p-1" data-bs-toggle="tooltip" data-bs-title="Example Text Input."></i>-->
+        <!--        <input id="testInput" aria-describedby="testInputHelp" type="text" class="form-control" autocomplete="off">-->
+        <!--        <div class="form-text" id="testInputHelp">Just a test text input.</div>-->
+        <!--    </div>-->
+        <!--    <div class="col-12 col-sm-4  mb-2">-->
+        <!--        <label for="testNumber" class="form-label"><i class="fa-solid fa-hashtag me-1"></i> Number</label>-->
+        <!--        <i class="fa-solid fa-circle-info p-1" data-bs-toggle="tooltip" data-bs-title="Example Number Input."></i>-->
+        <!--        <input id="testNumber" aria-describedby="testNumberHelp" type="number" step="5" min="5" max="360" class="form-control" autocomplete="off" placeholder="Minutes">-->
+        <!--        <div class="form-text" id="testNumberHelp">-->
+        <!--            A number 5-360.-->
+        <!--        </div>-->
+        <!--    </div>-->
+        <!--</div> &lt;!&ndash; row &ndash;&gt;-->
+
+        <div class="row mb-2">
+            <div class="col-12 col-sm-4 mb-2">
+                <label for="dotsColor" class="form-label"><i class="fa-classic fa-solid fa-qrcode me-1"></i> Dots Color</label>
+                <i class="fa-solid fa-circle-info p-1" data-bs-toggle="tooltip" data-bs-title="Example Text Input."></i>
+                <input id="dotsColor" type="text" class="form-control" data-coloris>
+                <div class="form-text" id="dotsColorHelp">Main qr code color.</div>
+            </div>
+            <div class="col-12 col-sm-4 mb-2">
+                <label for="outCorner" class="form-label"><i class="fa-classic fa-regular fa-square me-1"></i> Outer Corner</label>
+                <i class="fa-solid fa-circle-info p-1" data-bs-toggle="tooltip" data-bs-title="Example Text Input."></i>
+                <input id="outCorner" type="text" class="form-control" data-coloris>
+                <div class="form-text" id="outCornerHelp">Outer corner box color.</div>
+            </div>
+            <div class="col-12 col-sm-4 mb-2">
+                <label for="innerCorner" class="form-label"><i class="fa-classic fa-solid fa-circle me-1"></i> Inner Corner</label>
+                <i class="fa-solid fa-circle-info p-1" data-bs-toggle="tooltip" data-bs-title="Example Text Input."></i>
+                <input id="innerCorner" type="text" class="form-control" data-coloris>
+                <div class="form-text" id="innerCornerHelp">Inner corner dot color.</div>
+            </div>
+        </div> <!-- row -->
+
+        <div class="form-check form-switch" data-mobile-add="d-none">
+            <input class="form-check-input" id="contextMenu" type="checkbox" role="switch">
+            <label class="form-check-label" for="contextMenu">Enable Right Click Menu</label>
+            <i class="fa-solid fa-circle-info p-1" data-bs-toggle="tooltip" data-bs-title="Show Context Menu on Right Click."></i>
+        </div>
+        <div class="form-check form-switch">
+            <input class="form-check-input" id="showUpdate" type="checkbox" role="switch">
+            <label class="form-check-label" for="showUpdate">Show Release Notes on Update</label>
+            <i class="fa-solid fa-circle-info p-1" data-bs-toggle="tooltip" data-bs-title="Show Release Notes on Version Update."></i>
+        </div>
+    </form> <!-- options -->
+
+    <!--<div class="d-none grant-perms my-3">-->
+    <!--    <button class="btn btn-sm btn-outline-success me-2 grant-permissions" type="button"-->
+    <!--            data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover"-->
+    <!--            data-bs-title="Tab Permissions Grant Additional Functionality.">-->
+    <!--        <i class="fa-solid fa-check-double me-1"></i> Grant Tab Permissions</button>-->
+    <!--    <span class="text-center small d-inline-block"><a href="../html/permissions.html">More about Permissions</a></span>-->
+    <!--</div>-->
+    <!--<div class="d-none has-perms my-3">-->
+    <!--    <button class="link-danger btn btn-sm btn-link revoke-permissions" type="button"-->
+    <!--            data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover"-->
+    <!--            data-bs-title="Removes Tab Permissions for Side Panel.">-->
+    <!--        Remove Tab Permissions</button>-->
+    <!--</div> &lt;!&ndash; grant-perms &ndash;&gt;-->
+
+    <p class="fst-italic small mt-3">
+        <a id="copy-support" href="#0">Copy Support Information</a> for issue reporting.
+    </p>
+
+    <hr class="mt-0">
+
+    <div class="text-center">
+        <a class="link-body-emphasis text-decoration-none d-inline-block" target="_blank" rel="noopener"
+           href="../html/help.html">How to Use</a>
+        <span class="mx-2">&bull;</span>
+        <a class="link-body-emphasis text-decoration-none d-inline-block" target="_blank" rel="noopener"
+           href="homepage_url">GitHub</a>
+        <span class="mx-2">&bull;</span>
+        <a class="link-body-emphasis text-decoration-none d-inline-block" target="_blank" rel="noopener"
+           href="https://github.com/cssnr/obtainium-extension/discussions/categories/feature-requests">Request Feature</a>
+        <span class="mx-2">&bull;</span>
+        <a class="link-body-emphasis text-decoration-none d-inline-block" target="_blank" rel="noopener"
+           href="https://github.com/cssnr/obtainium-extension/issues">Open Issue</a>
+    </div> <!-- footer -->
+
+</div> <!-- options-wrapper -->
+</div> <!-- m-auto -->
+</div> <!-- d-flex -->
+
+<div id="import-modal" class="modal fade" tabindex="-1" aria-labelledby="import-modal-label" aria-hidden="true">
+<div class="modal-dialog modal-lg modal-dialog-centered" style="width: 348px;">
+<div class="modal-content">
+    <div class="modal-header">
+        <h1 class="modal-title fs-5" id="import-modal-label">Color Picker</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" tabindex="-1"></button>
+    </div> <!-- modal-header -->
+    <div class="modal-body m-auto">
+        <div id="picker"></div>
+    </div> <!-- modal-body -->
+</div> <!-- modal-content -->
+</div> <!-- modal-dialog -->
+</div><!-- import-modal -->
+
+<button type="button" class="btn btn-outline-primary" id="back-to-top">
+    <i class="fa-regular fa-square-caret-up"></i>
+</button> <!-- back-to-top -->
+
+<div aria-live="polite" aria-atomic="true" class="">
+    <div id="toast-container" class="toast-container position-fixed bottom-0 end-0 p-3"></div>
+</div> <!-- toast -->
+
+<div id="clone" class="d-none">
+    <div class="toast align-items-center border-0" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="10000">
+        <div class="toast-body"></div>
+    </div>
+    <i class="fa-regular fa-copy"></i>
+</div> <!-- clone -->
+
+<script type="text/javascript" src="../dist/clipboard/clipboard.min.js"></script>
+<script type="text/javascript" src="../dist/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../dist/bootstrap/bootstrap.bundle.min.js"></script>
+<script type="text/javascript" src="../dist/coloris/coloris.min.js"></script>
+<script type="module" src="../js/main.js"></script>
+<script type="module" src="../js/options.js"></script>
+
+</body>
+</html>

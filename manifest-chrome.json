@@ -1,0 +1,29 @@
+{
+  "commands": {
+    "_execute_action": {
+      "suggested_key": {
+        "default": "Alt+Shift+A"
+      },
+      "description": "Open Popup"
+    }
+  },
+  "permissions": ["sidePanel", "declarativeContent"],
+  "side_panel": {
+    "default_path": "html/sidepanel.html"
+  },
+  "background": {
+    "service_worker": "js/service-worker.js"
+  },
+  "action": {
+    "default_popup": "html/popup.html",
+    "default_title": "Obtainium Extension",
+    "default_icon": {
+      "16": "images/logo16.png",
+      "32": "images/logo32.png",
+      "48": "images/logo48.png",
+      "96": "images/logo96.png",
+      "128": "images/logo128.png"
+    }
+  },
+  "minimum_chrome_version": "127"
+}
