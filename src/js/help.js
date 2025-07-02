@@ -38,6 +38,8 @@ async function domContentLoaded() {
     console.debug('platform.os:', platform.os)
     if (platform.os === 'android') {
         console.debug('%c ANDROID DETECTED', 'color: Lime')
-        bootstrap.Tab.getInstance(document.getElementById('mobile-tab')).show()
+        const el = document.getElementById('mobile-tab')
+        const tab = bootstrap.Tab.getOrCreateInstance(el)
+        tab?.show()
     }
 }
