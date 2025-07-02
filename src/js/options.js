@@ -1,13 +1,8 @@
 // JS for options.html
 
 import {
-    checkPerms,
-    grantPerms,
     isDark,
     linkClick,
-    onAdded,
-    onRemoved,
-    revokePerms,
     saveOptions,
     showToast,
     updateManifest,
@@ -17,17 +12,9 @@ import {
 } from './export.js'
 
 chrome.storage.onChanged.addListener(onChanged)
-chrome.permissions.onAdded.addListener(onAdded)
-chrome.permissions.onRemoved.addListener(onRemoved)
 
 document.addEventListener('DOMContentLoaded', initOptions)
 document.getElementById('copy-support').addEventListener('click', copySupport)
-document
-    .querySelectorAll('.revoke-permissions')
-    .forEach((el) => el.addEventListener('click', revokePerms))
-document
-    .querySelectorAll('.grant-permissions')
-    .forEach((el) => el.addEventListener('click', grantPerms))
 document
     .querySelectorAll('a[href]')
     .forEach((el) => el.addEventListener('click', linkClick))
@@ -72,8 +59,6 @@ async function initOptions() {
     updateBrowser()
     // noinspection ES6MissingAwait
     updatePlatform()
-    // noinspection ES6MissingAwait
-    checkPerms()
     // noinspection ES6MissingAwait
     setShortcuts()
     chrome.storage.sync.get(['options']).then((items) => {
