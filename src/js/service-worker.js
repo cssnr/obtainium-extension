@@ -1,6 +1,6 @@
 // JS Background Service Worker
 
-import { activateOrOpen, openExtPanel, openPopup, githubURL } from './export.js'
+import { activateOrOpen, openPopup, githubURL } from './export.js'
 
 chrome.runtime.onInstalled.addListener(onInstalled)
 chrome.runtime.onStartup.addListener(onStartup)
@@ -110,12 +110,6 @@ async function onClicked(ctx, tab) {
         await activateOrOpen(chrome.runtime.getURL('/html/help.html'))
     } else if (ctx.menuItemId === 'openPopup') {
         await openPopup()
-    } else if (ctx.menuItemId === 'qrCodeMedia') {
-        showQrCodePanel(ctx.srcUrl)
-    } else if (ctx.menuItemId === 'qrCodeLink') {
-        showQrCodePanel(ctx.linkUrl)
-    } else if (ctx.menuItemId === 'qrCodePage') {
-        showQrCodePanel(ctx.pageUrl)
     } else {
         console.error(`Unknown ctx.menuItemId: ${ctx.menuItemId}`)
     }
@@ -132,8 +126,6 @@ async function onCommand(command, tab) {
     if (command === 'openOptions') {
         // noinspection ES6MissingAwait
         chrome.runtime.openOptionsPage()
-    } else if (command === 'openExtPanel') {
-        await openExtPanel()
     } else {
         console.error(`Unknown Command: ${command}`)
     }
@@ -252,20 +244,6 @@ async function setDefaultOptions(defaultOptions) {
         console.log('changed options:', options)
     }
     return options
-}
-
-function showQrCodePanel(data) {
-    console.debug('showQrCodePanel:', data)
-    latestData = data
-    // noinspection JSIgnoredPromiseFromCall
-    openExtPanel()
-    const message = { type: 'panelData', data: data }
-    chrome.runtime.sendMessage(message, (response) => {
-        console.debug(`response:`, response)
-        if (chrome.runtime.lastError) {
-            console.warn('sendMessage:', chrome.runtime.lastError.message)
-        }
-    })
 }
 
 // /**

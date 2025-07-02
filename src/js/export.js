@@ -124,10 +124,6 @@ export async function linkClick(event, close = false) {
         await chrome.runtime.openOptionsPage()
         if (close) window.close()
         return
-    } else if (href.endsWith('html/panel.html')) {
-        await openExtPanel()
-        if (close) window.close()
-        return
     } else if (href.startsWith('http')) {
         url = href
     } else {
@@ -238,50 +234,6 @@ export async function updatePlatform() {
             })
     }
     return platform
-}
-
-/**
- * Open Extension Panel
- * @function openExtPanel
- * @param {String} [url]
- * @param {Number} [width]
- * @param {Number} [height]
- * @param {String} [type]
- * @return {Promise<chrome.windows.Window|undefined>}
- */
-export async function openExtPanel(
-    url = '/html/panel.html',
-    width = 420,
-    height = 600,
-    type = 'panel'
-) {
-    console.debug(`openExtPanel: ${url}`, width, height)
-    if (!chrome.windows) {
-        console.log('Browser does not support: chrome.windows')
-        showToast('Browser does not support windows', 'danger')
-        return
-    }
-    const { lastPanelID } = await chrome.storage.local.get(['lastPanelID'])
-    console.debug('lastPanelID:', lastPanelID)
-
-    try {
-        const window = await chrome.windows.get(lastPanelID)
-        if (window) {
-            console.debug(`%c Window found: ${window.id}`, 'color: Lime')
-            return await chrome.windows.update(lastPanelID, {
-                focused: true,
-            })
-        }
-    } catch (e) {
-        console.log(e)
-    }
-
-    const window = await chrome.windows.create({ type, url, width, height })
-    // NOTE: Code after windows.create is not executed on the first pop-out...
-    console.debug(`%c Created new window: ${window.id}`, 'color: Yellow')
-    // noinspection ES6MissingAwait
-    // chrome.storage.local.set({ lastPanelID: window.id })
-    return window
 }
 
 /**
