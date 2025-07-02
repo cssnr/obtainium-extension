@@ -30,11 +30,6 @@ document
     .querySelectorAll('.open-popup')
     .forEach((el) => el.addEventListener('click', openPopup))
 document
-    .querySelectorAll('.open-options')
-    .forEach((el) =>
-        el.addEventListener('click', () => chrome.runtime.openOptionsPage())
-    )
-document
     .querySelectorAll('[data-bs-toggle="tooltip"]')
     .forEach((el) => new bootstrap.Tooltip(el))
 
@@ -49,10 +44,16 @@ async function domContentLoaded() {
     // noinspection ES6MissingAwait
     checkPerms()
     // noinspection ES6MissingAwait
-    updatePlatform()
-    // noinspection ES6MissingAwait
     updateBrowser()
+
     chrome.storage.sync.get(['options']).then((items) => {
         console.debug('options:', items.options)
     })
+
+    const platform = await updatePlatform()
+    console.debug('platform.os:', platform.os)
+    if (platform.os === 'android') {
+        console.debug('%c ANDROID DETECTED', 'color: Lime')
+        bootstrap.Tab.getInstance(document.getElementById('mobile-tab')).show()
+    }
 }

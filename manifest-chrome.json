@@ -7,10 +7,7 @@
       "description": "Open Popup"
     }
   },
-  "permissions": ["sidePanel", "declarativeContent"],
-  "side_panel": {
-    "default_path": "html/sidepanel.html"
-  },
+  "permissions": ["declarativeContent"],
   "background": {
     "service_worker": "js/service-worker.js"
   },

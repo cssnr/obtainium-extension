@@ -1,12 +1,6 @@
 // JS Background Service Worker
 
-import {
-    activateOrOpen,
-    openExtPanel,
-    openPopup,
-    openSidePanel,
-    githubURL,
-} from './export.js'
+import { activateOrOpen, openExtPanel, openPopup, githubURL } from './export.js'
 
 chrome.runtime.onInstalled.addListener(onInstalled)
 chrome.runtime.onStartup.addListener(onStartup)
@@ -14,7 +8,7 @@ chrome.contextMenus?.onClicked.addListener(onClicked)
 chrome.commands?.onCommand.addListener(onCommand)
 chrome.runtime.onMessage.addListener(onMessage)
 chrome.storage.onChanged.addListener(onChanged)
-chrome.tabs.onUpdated.addListener(onUpdated)
+// chrome.tabs.onUpdated.addListener(onUpdated)
 
 let latestData
 
@@ -26,8 +20,6 @@ let latestData
 async function onInstalled(details) {
     console.log('onInstalled:', details)
     const options = await setDefaultOptions({
-        testInput: 'Default Value',
-        testNumber: 60,
         contextMenu: true,
         showUpdate: false,
         dotsColor: '#c987ff',
@@ -68,7 +60,7 @@ async function onInstalled(details) {
     const platform = await chrome.runtime.getPlatformInfo()
     console.debug('platform:', platform)
 
-    // TODO: These are more trouble than worth for this...
+    // TODO: These are currently more trouble than worth...
     // if (chrome.declarativeContent) {
     //     addPageRules()
     // }
@@ -118,8 +110,6 @@ async function onClicked(ctx, tab) {
         await activateOrOpen(chrome.runtime.getURL('/html/help.html'))
     } else if (ctx.menuItemId === 'openPopup') {
         await openPopup()
-    } else if (ctx.menuItemId === 'openSidePanel') {
-        await openSidePanel()
     } else if (ctx.menuItemId === 'qrCodeMedia') {
         showQrCodePanel(ctx.srcUrl)
     } else if (ctx.menuItemId === 'qrCodeLink') {
@@ -144,8 +134,6 @@ async function onCommand(command, tab) {
         chrome.runtime.openOptionsPage()
     } else if (command === 'openExtPanel') {
         await openExtPanel()
-    } else if (command === 'openSidePanel') {
-        await openSidePanel()
     } else {
         console.error(`Unknown Command: ${command}`)
     }
@@ -181,41 +169,13 @@ function onChanged(changes, namespace) {
                     console.log('%c Enabled contextMenu...', 'color: Lime')
                     createContextMenus()
                 } else {
-                    console.log(
-                        '%c Disabled contextMenu...',
-                        'color: OrangeRed'
-                    )
+                    console.log('%c Disabled contextMenu...', 'color: Orange')
                     // noinspection JSIgnoredPromiseFromCall
                     chrome.contextMenus?.removeAll()
                 }
             }
         }
     }
-}
-
-/**
- * On Updated Callback
- * @function onUpdated
- * @param {number} tabId
- * @param {chrome.tabs.TabChangeInfo} changeInfo
- * @param {chrome.tabs.Tab} tab
- */
-function onUpdated(tabId, changeInfo, tab) {
-    // console.debug(`tabs.onUpdated: ${tabId}:`, changeInfo, tab)
-    if (!changeInfo.url) return
-    console.debug(`changeInfo.url:`, changeInfo.url)
-    if (changeInfo.url === 'about:newtab') return
-    const message = {
-        type: 'onUpdated',
-        changeInfo: changeInfo,
-        tab: tab,
-    }
-    chrome.runtime.sendMessage(message, (response) => {
-        console.debug(`response:`, response)
-        if (chrome.runtime.lastError) {
-            console.warn('sendMessage:', chrome.runtime.lastError.message)
-        }
-    })
 }
 
 /**
@@ -229,12 +189,6 @@ function createContextMenus() {
     console.debug('createContextMenus')
     /** @type {Array[chrome.contextMenus.ContextType[], String, String]} */
     const contexts = [
-        // [['image', 'audio', 'video'], 'qrCodeMedia', 'QR Code for Media'],
-        // [['link'], 'qrCodeLink', 'QR Code for Link'],
-        // [['all'], 'qrCodePage', 'QR Code for Page'],
-        // [['page', 'link', 'image', 'audio', 'video'], 'separator'],
-        // [['all'], 'separator'],
-        // [['all'], 'openSidePanel', 'Open Side Panel'],
         [['all'], 'openPopup', 'Activate Extension'],
         [['all'], 'openHelp', 'How to Use'],
         [['all'], 'openOptions', 'Open Options'],
@@ -282,15 +236,6 @@ function addContext(context) {
  */
 async function setDefaultOptions(defaultOptions) {
     console.log('setDefaultOptions', defaultOptions)
-    // chrome.storage.sync.get(['sites']).then((items) => {
-    //     if (!items.sites) {
-    //         console.debug('initialize empty sync sites')
-    //         // noinspection ES6MissingAwait
-    //         chrome.storage.sync.set({ sites: [] })
-    //     }
-    // })
-
-    // options
     let { options } = await chrome.storage.sync.get(['options'])
     options = options || {}
     let changed = false
@@ -322,6 +267,31 @@ function showQrCodePanel(data) {
         }
     })
 }
+
+// /**
+//  * On Updated Callback
+//  * @function onUpdated
+//  * @param {number} tabId
+//  * @param {chrome.tabs.TabChangeInfo} changeInfo
+//  * @param {chrome.tabs.Tab} tab
+//  */
+// function onUpdated(tabId, changeInfo, tab) {
+//     // console.debug(`tabs.onUpdated: ${tabId}:`, changeInfo, tab)
+//     if (!changeInfo.url) return
+//     console.debug(`changeInfo.url:`, changeInfo.url)
+//     if (changeInfo.url === 'about:newtab') return
+//     const message = {
+//         type: 'onUpdated',
+//         changeInfo: changeInfo,
+//         tab: tab,
+//     }
+//     chrome.runtime.sendMessage(message, (response) => {
+//         console.debug(`response:`, response)
+//         if (chrome.runtime.lastError) {
+//             console.warn('sendMessage:', chrome.runtime.lastError.message)
+//         }
+//     })
+// }
 
 // function addPageRules() {
 //     const pageUrlFilters = [

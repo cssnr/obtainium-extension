@@ -128,10 +128,6 @@ export async function linkClick(event, close = false) {
         await openExtPanel()
         if (close) window.close()
         return
-    } else if (href.endsWith('html/sidepanel.html')) {
-        await openSidePanel()
-        if (close) window.close()
-        return
     } else if (href.startsWith('http')) {
         url = href
     } else {
@@ -366,35 +362,6 @@ export async function openExtPanel(
     // noinspection ES6MissingAwait
     // chrome.storage.local.set({ lastPanelID: window.id })
     return window
-}
-
-/**
- * Open Side Panel Callback
- * @function openSidePanel
- * @param {Event} [event]
- */
-export async function openSidePanel(event) {
-    console.debug('openSidePanel:', event)
-    if (chrome.sidePanel) {
-        chrome.tabs.query({ active: true, currentWindow: true }, ([tab]) => {
-            chrome.sidePanel.open({ windowId: tab.windowId })
-        })
-    } else if (chrome.sidebarAction) {
-        // noinspection JSUnresolvedReference
-        await chrome.sidebarAction.open()
-    } else {
-        console.log('Side Panel Not Supported')
-        if (event) {
-            showToast('Side Panel Not Supported', 'danger')
-            return
-        }
-    }
-    if (event) {
-        window.close()
-    }
-    // if (typeof window !== 'undefined') {
-    //     window.close()
-    // }
 }
 
 /**
