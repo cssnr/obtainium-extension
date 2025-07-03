@@ -45,6 +45,8 @@ All **Chromium** Based Browsers can install the extension from the
 
 Mobile browser support available for [Firefox Android](https://addons.mozilla.org/addon/obtainium-extension).
 
+[![Firefox Android](https://raw.githubusercontent.com/smashedr/repo-images/refs/heads/master/obtainium/qr-code-firefox.png)](https://addons.mozilla.org/addon/obtainium-extension)
+
 ## Features
 
 ### Desktop Browser
