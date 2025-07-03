@@ -1,6 +1,8 @@
 [![Chrome Web Store Users](https://img.shields.io/chrome-web-store/users/flmepeihikildcikjbmikbbmbeemedja?logo=google&logoColor=white&label=users)](https://chromewebstore.google.com/detail/obtainium-extension/flmepeihikildcikjbmikbbmbeemedja)
 [![Mozilla Add-on Users](https://img.shields.io/amo/users/obtainium-extension?logo=mozilla&label=users)](https://addons.mozilla.org/addon/obtainium-extension)
 [![GitHub Downloads](https://img.shields.io/github/downloads/cssnr/obtainium-extension/total?logo=github)](https://github.com/cssnr/obtainium-extension/releases/latest)
+[![Chrome Web Store Rating](https://img.shields.io/chrome-web-store/rating/flmepeihikildcikjbmikbbmbeemedja?logo=google&logoColor=white)](https://chromewebstore.google.com/detail/obtainium-extension/flmepeihikildcikjbmikbbmbeemedja)
+[![Mozilla Add-on Rating](https://img.shields.io/amo/rating/obtainium-extension?logo=mozilla&logoColor=white)](https://addons.mozilla.org/addon/obtainium-extension)
 [![GitHub Repo Stars](https://img.shields.io/github/stars/cssnr/obtainium-extension?style=flat&logo=github)](https://github.com/cssnr/obtainium-extension/stargazers)
 [![Chrome Web Store Version](https://img.shields.io/chrome-web-store/v/flmepeihikildcikjbmikbbmbeemedja?label=chrome&logo=googlechrome)](https://chromewebstore.google.com/detail/obtainium-extension/flmepeihikildcikjbmikbbmbeemedja)
 [![Mozilla Add-on Version](https://img.shields.io/amo/v/obtainium-extension?label=firefox&logo=firefox)](https://addons.mozilla.org/addon/obtainium-extension)
