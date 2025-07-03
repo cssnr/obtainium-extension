@@ -70,9 +70,12 @@ async function initPopup() {
 
     const platform = await updatePlatform()
 
-    if (platform.os === 'android') {
+    if (platform.os !== 'android') {
+        console.debug('%c BROWSER DETECTED', 'color: Gold')
+        const qrCodeEl = document.getElementById('qr-code')
+        await genQrCode(qrCodeEl, deepLink)
+    } else {
         console.debug('%c ANDROID DETECTED', 'color: Lime')
-        // TODO: Add option to show QR Code on Android...
         const { options } = await chrome.storage.sync.get(['options'])
         if (!options.showPopup) {
             console.debug('%c Popup Disabled: Redirecting', 'color: OrangeRed')
@@ -90,10 +93,6 @@ async function initPopup() {
             const qrCodeEl = document.getElementById('qr-code')
             await genQrCode(qrCodeEl, deepLink)
         }
-    } else {
-        console.debug('%c BROWSER DETECTED', 'color: Gold')
-        const qrCodeEl = document.getElementById('qr-code')
-        await genQrCode(qrCodeEl, deepLink)
     }
 }
 
