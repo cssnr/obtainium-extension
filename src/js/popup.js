@@ -53,21 +53,22 @@ async function initPopup() {
     if (!sourceUrl) {
         return console.debug('%c No Source URL Match', 'color: Yellow')
     }
+    updateLink('source-url-link', sourceUrl)
 
     // Deep Link
     const deepLink = `obtainium://add/${sourceUrl}`
     console.debug('deepLink:', deepLink)
+    updateLink('deep-url-link', deepLink)
 
     // Redirect Link
     const url = new URL('https://apps.obtainium.imranr.dev/redirect')
     url.searchParams.append('r', deepLink)
     const redirectUrl = url.toString()
     console.debug('redirectUrl:', redirectUrl)
+    updateLink('redirect-url-link', redirectUrl)
 
     // Process Popup
-
     sourceUrlEl.textContent = sourceUrl
-
     const platform = await updatePlatform()
 
     if (platform.os !== 'android') {
@@ -96,11 +97,31 @@ async function initPopup() {
     }
 }
 
+/**
+ * @function extractRepoUrl
+ * @param {string} fullUrl
+ * @return {string|null}
+ */
 function extractRepoUrl(fullUrl) {
-    const regex = /^(https?:\/\/[^/]+\/[^/]+\/[^/]+)(?:\/|$)/i
-    const match = fullUrl.match(regex)
-    if (match) {
-        return match[1]
+    try {
+        const url = new URL(fullUrl)
+        const parts = url.pathname.replace('/', '').split('/')
+        if (parts.length < 2 || !parts[1]) {
+            return null
+        }
+        return `${url.origin}/${parts[0]}/${parts[1]}`
+    } catch (e) {
+        console.debug('error:', e)
+        return null
     }
-    return null
+}
+
+function updateLink(elementId, href) {
+    const link = document.getElementById(elementId)
+    link.href = href
+    link.dataset.clipboardTarget = `#${elementId}`
+    link.dataset.clipboardText = href
+    link.addEventListener('click', (e) => {
+        e.preventDefault()
+    })
 }
