@@ -105,8 +105,12 @@ async function initPopup() {
  * @return {string|null}
  */
 function extractRepoUrl(fullUrl) {
+    const hosts = ['github.com', 'gitlab.com', 'forgejo.org', 'codeberg.org']
     try {
         const url = new URL(fullUrl)
+        if (!hosts.includes(url.host)) {
+            return null
+        }
         const parts = url.pathname.replace('/', '').split('/')
         if (parts.length < 2 || !parts[1]) {
             return null

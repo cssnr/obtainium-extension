@@ -82,10 +82,12 @@ async function getPage(browser, name, log, size) {
     console.log('worker:', worker)
     worker.on('console', (msg) => console.log(`worker:`, msg.text()))
 
-    // Popup
+    let page
     await new Promise((resolve) => setTimeout(resolve, 500))
+
+    // Popup
     await worker.evaluate('chrome.action.openPopup();')
-    let page = await getPage(browser, 'popup.html')
+    page = await getPage(browser, 'popup.html')
     console.log('page:', page)
     await page.waitForNetworkIdle()
     await page.screenshot(ssOpts('popup1'))
