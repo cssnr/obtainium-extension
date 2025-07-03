@@ -58,10 +58,9 @@ async function onInstalled(details) {
     const platform = await chrome.runtime.getPlatformInfo()
     console.debug('platform:', platform)
 
-    // TODO: This only disables the popup but it still shows as active...
-    // if (chrome.declarativeContent) {
-    //     addPageRules()
-    // }
+    if (chrome.declarativeContent) {
+        addPageRules()
+    }
 }
 
 /**
@@ -229,30 +228,41 @@ async function setDefaultOptions(defaultOptions) {
     return options
 }
 
-// function addPageRules() {
-//     const pageUrlFilters = [
-//         {
-//             urlMatches: 'https:\\/\\/github\\.com\\/.*\\/.+',
-//             // hostEquals: 'github.com',
-//             // pathPrefix: '/',
-//             // pathContains: '/',
-//         },
-//     ]
-//     // noinspection JSIgnoredPromiseFromCall
-//     chrome.action.disable()
-//     chrome.declarativeContent.onPageChanged.removeRules(undefined, () => {
-//         const rules = []
-//         pageUrlFilters.forEach((opts) => {
-//             rules.push({
-//                 conditions: [
-//                     new chrome.declarativeContent.PageStateMatcher({
-//                         pageUrl: opts,
-//                     }),
-//                 ],
-//                 actions: [new chrome.declarativeContent.ShowAction()],
-//             })
-//         })
-//         console.debug('addPageRules:', rules)
-//         chrome.declarativeContent.onPageChanged.addRules(rules)
-//     })
-// }
+function addPageRules() {
+    const pageUrlFilters = [
+        {
+            // urlMatches: 'https:\\/\\/github\\.com\\/.*\\/.+',
+            hostEquals: 'github.com',
+            pathContains: '/',
+        },
+        {
+            hostEquals: 'gitlab.com',
+            pathContains: '/',
+        },
+        {
+            hostEquals: 'forgejo.org',
+            pathContains: '/',
+        },
+        {
+            hostEquals: 'codeberg.org',
+            pathContains: '/',
+        },
+    ]
+    // noinspection JSIgnoredPromiseFromCall
+    chrome.action.disable()
+    chrome.declarativeContent.onPageChanged.removeRules(undefined, () => {
+        const rules = []
+        pageUrlFilters.forEach((opts) => {
+            rules.push({
+                conditions: [
+                    new chrome.declarativeContent.PageStateMatcher({
+                        pageUrl: opts,
+                    }),
+                ],
+                actions: [new chrome.declarativeContent.ShowAction()],
+            })
+        })
+        console.debug('addPageRules:', rules)
+        chrome.declarativeContent.onPageChanged.addRules(rules)
+    })
+}

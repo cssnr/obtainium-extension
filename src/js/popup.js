@@ -24,6 +24,7 @@ document
     .forEach((el) => new bootstrap.Tooltip(el))
 
 const sourceUrlEl = document.getElementById('source-url')
+const copyLinksEl = document.getElementById('copy-links')
 
 /**
  * Initialize Popup
@@ -53,6 +54,7 @@ async function initPopup() {
     if (!sourceUrl) {
         return console.debug('%c No Source URL Match', 'color: Yellow')
     }
+    copyLinksEl.classList.remove('d-none')
     updateLink('source-url-link', sourceUrl)
 
     // Deep Link
