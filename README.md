@@ -1,8 +1,10 @@
-[![Chrome Web Store Users](https://img.shields.io/chrome-web-store/users/xxxchromexxx?logo=google&logoColor=white&label=users)](https://chromewebstore.google.com/detail/obtainium-extension/xxxchromexxx)
+[![Chrome Web Store Users](https://img.shields.io/chrome-web-store/users/flmepeihikildcikjbmikbbmbeemedja?logo=google&logoColor=white&label=users)](https://chromewebstore.google.com/detail/obtainium-extension/flmepeihikildcikjbmikbbmbeemedja)
 [![Mozilla Add-on Users](https://img.shields.io/amo/users/obtainium-extension?logo=mozilla&label=users)](https://addons.mozilla.org/addon/obtainium-extension)
 [![GitHub Downloads](https://img.shields.io/github/downloads/cssnr/obtainium-extension/total?logo=github)](https://github.com/cssnr/obtainium-extension/releases/latest)
+[![Chrome Web Store Rating](https://img.shields.io/chrome-web-store/rating/flmepeihikildcikjbmikbbmbeemedja?logo=google&logoColor=white)](https://chromewebstore.google.com/detail/obtainium-extension/flmepeihikildcikjbmikbbmbeemedja)
+[![Mozilla Add-on Rating](https://img.shields.io/amo/rating/obtainium-extension?logo=mozilla&logoColor=white)](https://addons.mozilla.org/addon/obtainium-extension)
 [![GitHub Repo Stars](https://img.shields.io/github/stars/cssnr/obtainium-extension?style=flat&logo=github)](https://github.com/cssnr/obtainium-extension/stargazers)
-[![Chrome Web Store Version](https://img.shields.io/chrome-web-store/v/xxxchromexxx?label=chrome&logo=googlechrome)](https://chromewebstore.google.com/detail/obtainium-extension/xxxchromexxx)
+[![Chrome Web Store Version](https://img.shields.io/chrome-web-store/v/flmepeihikildcikjbmikbbmbeemedja?label=chrome&logo=googlechrome)](https://chromewebstore.google.com/detail/obtainium-extension/flmepeihikildcikjbmikbbmbeemedja)
 [![Mozilla Add-on Version](https://img.shields.io/amo/v/obtainium-extension?label=firefox&logo=firefox)](https://addons.mozilla.org/addon/obtainium-extension)
 [![GitHub Release Version](https://img.shields.io/github/v/release/cssnr/obtainium-extension?logo=github)](https://github.com/cssnr/obtainium-extension/releases/latest)
 [![Build](https://img.shields.io/github/actions/workflow/status/cssnr/obtainium-extension/build.yaml?logo=github&label=build)](https://github.com/cssnr/obtainium-extension/actions/workflows/build.yaml)
@@ -28,21 +30,22 @@ QR Codes and Deep Links to [Obtainium](https://github.com/ImranR98/Obtainium) fo
 
 ## Install
 
-- [Google Chrome Web Store](https://chromewebstore.google.com/detail/obtainium-extension/xxxchromexxx)
+- [Google Chrome Web Store](https://chromewebstore.google.com/detail/obtainium-extension/flmepeihikildcikjbmikbbmbeemedja)
 - [Mozilla Firefox Add-ons](https://addons.mozilla.org/addon/obtainium-extension)
 
-[![Chrome](https://raw.githubusercontent.com/smashedr/logo-icons/master/browsers/chrome_48.png)](https://chromewebstore.google.com/detail/obtainium-extension/xxxchromexxx)
+[![Chrome](https://raw.githubusercontent.com/smashedr/logo-icons/master/browsers/chrome_48.png)](https://chromewebstore.google.com/detail/obtainium-extension/flmepeihikildcikjbmikbbmbeemedja)
 [![Firefox](https://raw.githubusercontent.com/smashedr/logo-icons/master/browsers/firefox_48.png)](https://addons.mozilla.org/addon/obtainium-extension)
-[![Edge](https://raw.githubusercontent.com/smashedr/logo-icons/master/browsers/edge_48.png)](https://chromewebstore.google.com/detail/obtainium-extension/xxxchromexxx)
-[![Opera](https://raw.githubusercontent.com/smashedr/logo-icons/master/browsers/opera_48.png)](https://chromewebstore.google.com/detail/obtainium-extension/xxxchromexxx)
-[![Brave](https://raw.githubusercontent.com/smashedr/logo-icons/master/browsers/brave_48.png)](https://chromewebstore.google.com/detail/obtainium-extension/xxxchromexxx)
-[![Chromium](https://raw.githubusercontent.com/smashedr/logo-icons/master/browsers/chromium_48.png)](https://chromewebstore.google.com/detail/obtainium-extension/xxxchromexxx)
-[![Yandex](https://raw.githubusercontent.com/smashedr/logo-icons/master/browsers/yandex_48.png)](https://chromewebstore.google.com/detail/obtainium-extension/xxxchromexxx)
+[![Edge](https://raw.githubusercontent.com/smashedr/logo-icons/master/browsers/edge_48.png)](https://chromewebstore.google.com/detail/obtainium-extension/flmepeihikildcikjbmikbbmbeemedja)
+[![Opera](https://raw.githubusercontent.com/smashedr/logo-icons/master/browsers/opera_48.png)](https://chromewebstore.google.com/detail/obtainium-extension/flmepeihikildcikjbmikbbmbeemedja)
+[![Brave](https://raw.githubusercontent.com/smashedr/logo-icons/master/browsers/brave_48.png)](https://chromewebstore.google.com/detail/obtainium-extension/flmepeihikildcikjbmikbbmbeemedja)
+[![Chromium](https://raw.githubusercontent.com/smashedr/logo-icons/master/browsers/chromium_48.png)](https://chromewebstore.google.com/detail/obtainium-extension/flmepeihikildcikjbmikbbmbeemedja)
 
 All **Chromium** Based Browsers can install the extension from the
-[Chrome Web Store](https://chromewebstore.google.com/detail/obtainium-extension/xxxchromexxx).
+[Chrome Web Store](https://chromewebstore.google.com/detail/obtainium-extension/flmepeihikildcikjbmikbbmbeemedja).
 
 Mobile browser support available for [Firefox Android](https://addons.mozilla.org/addon/obtainium-extension).
+
+[![Firefox Android](https://raw.githubusercontent.com/smashedr/repo-images/refs/heads/master/obtainium/qr-code-firefox.png)](https://addons.mozilla.org/addon/obtainium-extension)
 
 ## Features
 
