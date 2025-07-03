@@ -16,8 +16,8 @@
 
 # Obtainium Extension
 
-Modern **Web Extension** and **Firefox Android** Addon for automatically
-generating QR Codes and Deep Links to Obtainium supported sites.
+Modern **Web Extension** and **Firefox Android** Addon for automatically generating
+QR Codes and Deep Links to [Obtainium](https://github.com/ImranR98/Obtainium) for supported sites.
 
 - [Install](#Install)
 - [Features](#features)

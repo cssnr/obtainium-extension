@@ -5,7 +5,6 @@ import {
     linkClick,
     saveOptions,
     updateManifest,
-    updateOptions,
     updatePlatform,
 } from './export.js'
 
@@ -25,8 +24,6 @@ document
     .forEach((el) => new bootstrap.Tooltip(el))
 
 const sourceUrlEl = document.getElementById('source-url')
-// const deepLinkInput = document.getElementById('deep-link')
-const qrCodeEl = document.getElementById('qr-code')
 
 /**
  * Initialize Popup
@@ -36,9 +33,9 @@ async function initPopup() {
     console.debug('initPopup')
     // noinspection ES6MissingAwait
     updateManifest()
-    chrome.storage.sync.get(['options']).then((items) => {
-        updateOptions(items.options)
-    })
+    // chrome.storage.sync.get(['options']).then((items) => {
+    //     updateOptions(items.options)
+    // })
 
     // Get Tab
     const [tab] = await chrome.tabs.query({
@@ -56,37 +53,76 @@ async function initPopup() {
     if (!sourceUrl) {
         return console.debug('%c No Source URL Match', 'color: Yellow')
     }
+    updateLink('source-url-link', sourceUrl)
 
     // Deep Link
     const deepLink = `obtainium://add/${sourceUrl}`
     console.debug('deepLink:', deepLink)
+    updateLink('deep-url-link', deepLink)
 
     // Redirect Link
     const url = new URL('https://apps.obtainium.imranr.dev/redirect')
     url.searchParams.append('r', deepLink)
     const redirectUrl = url.toString()
     console.debug('redirectUrl:', redirectUrl)
+    updateLink('redirect-url-link', redirectUrl)
 
-    // Platform Here Cuz Yeah
+    // Process Popup
+    sourceUrlEl.textContent = sourceUrl
     const platform = await updatePlatform()
 
-    if (platform.os === 'android') {
-        console.debug('%c ANDROID DETECTED', 'color: Lime')
-        // TODO: Test This and/or Update Popup w/ Backup Links
-        await chrome.tabs.create({ active: true, url: deepLink })
-        window.close()
-    } else {
-        console.debug('%c NOT Android', 'color: Gold')
-        sourceUrlEl.textContent = sourceUrl
+    if (platform.os !== 'android') {
+        console.debug('%c BROWSER DETECTED', 'color: Gold')
+        const qrCodeEl = document.getElementById('qr-code')
         await genQrCode(qrCodeEl, deepLink)
+    } else {
+        console.debug('%c ANDROID DETECTED', 'color: Lime')
+        const { options } = await chrome.storage.sync.get(['options'])
+        if (!options.showPopup) {
+            console.debug('%c Popup Disabled: Redirecting', 'color: OrangeRed')
+            // NOTE: deepLink works on this navigation but not href links
+            await chrome.tabs.create({ active: true, url: deepLink })
+            return window.close()
+        }
+
+        const imageLink = document.getElementById('image-link')
+        // NOTE: deepLink does not work on href links so redirectUrl is used
+        imageLink.href = redirectUrl
+        imageLink.classList.remove('d-none')
+
+        if (options.showCodeMobile) {
+            const qrCodeEl = document.getElementById('qr-code')
+            await genQrCode(qrCodeEl, deepLink)
+        }
     }
 }
 
+/**
+ * @function extractRepoUrl
+ * @param {string} fullUrl
+ * @return {string|null}
+ */
 function extractRepoUrl(fullUrl) {
-    const regex = /^(https?:\/\/[^/]+\/[^/]+\/[^/]+)(?:\/|$)/i
-    const match = fullUrl.match(regex)
-    if (match) {
-        return match[1]
+    try {
+        const url = new URL(fullUrl)
+        const parts = url.pathname.replace('/', '').split('/')
+        if (parts.length < 2 || !parts[1]) {
+            return null
+        }
+        return `${url.origin}/${parts[0]}/${parts[1]}`
+    } catch (e) {
+        console.debug('error:', e)
+        return null
     }
-    return null
+}
+
+function updateLink(elementId, href) {
+    const link = document.getElementById(elementId)
+    link.href = href
+    link.dataset.clipboardTarget = `#${elementId}`
+    link.dataset.clipboardText = href
+    // link.addEventListener('click', (e) => {
+    //     console.debug('%c updateLink: e.preventDefault()', 'color: Yellow')
+    //     e.preventDefault()
+    // })
 }

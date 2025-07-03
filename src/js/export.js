@@ -113,9 +113,17 @@ function hideShowElement(selector, show, speed = 'fast') {
  */
 export async function linkClick(event, close = false) {
     console.debug('linkClick:', close, event)
+    const currentTarget = event.currentTarget
     event.preventDefault()
-    const href = event.currentTarget.getAttribute('href').replace(/^\.+/g, '')
+    const href = currentTarget.getAttribute('href').replace(/^\.+/g, '')
     console.debug('href:', href)
+    if (
+        currentTarget.dataset.clipboardText ||
+        currentTarget.dataset.clipboardTarget
+    ) {
+        console.debug('%c return on dataset.clipboardX', 'color: Yellow')
+        return
+    }
     let url
     if (href.startsWith('#')) {
         console.debug('return on anchor link')
