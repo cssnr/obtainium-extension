@@ -121,7 +121,8 @@ function updateLink(elementId, href) {
     link.href = href
     link.dataset.clipboardTarget = `#${elementId}`
     link.dataset.clipboardText = href
-    link.addEventListener('click', (e) => {
-        e.preventDefault()
-    })
+    // link.addEventListener('click', (e) => {
+    //     console.debug('%c updateLink: e.preventDefault()', 'color: Yellow')
+    //     e.preventDefault()
+    // })
 }
