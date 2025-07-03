@@ -96,12 +96,26 @@
             </div>
         </div> <!-- row -->
 
-        <div class="form-check form-switch" data-mobile-add="d-none">
-            <input class="form-check-input" id="contextMenu" type="checkbox" role="switch">
-            <label class="form-check-label" for="contextMenu">Enable Right Click Menu</label>
-            <i class="fa-solid fa-circle-info p-1" data-bs-toggle="tooltip" data-bs-title="Show Context Menu on Right Click."></i>
+        <div class="form-check form-switch pb-2">
+            <input class="form-check-input" id="showPopup" type="checkbox" role="switch" data-related="popupOptions">
+            <label class="form-check-label" for="showPopup">Show Popup on Android</label>
+            <i class="fa-brands fa-android p-1" data-bs-toggle="tooltip" data-bs-title="Shows a Popup with Get on Obtainium and Links."></i>
         </div>
-        <div class="form-check form-switch">
+        <div id="popupOptions" class="ms-4 mb-2" style="display: none;">
+            <div class="form-check form-switch pb-2">
+                <input class="form-check-input" id="showCodeMobile" type="checkbox" role="switch">
+                <label class="form-check-label" for="showCodeMobile">Show QR Code on Android</label>
+                <i class="fa-brands fa-android p-1" data-bs-toggle="tooltip" data-bs-title="Generate a QR Code from Android Popup."></i>
+            </div>
+        </div>
+
+        <div class="form-check form-switch pb-2" data-mobile-add="d-none">
+            <input class="form-check-input" id="contextMenu" type="checkbox" role="switch">
+            <label class="form-check-label" for="contextMenu">Enable Browser Context Menu</label>
+            <i class="fa-brands fa-firefox-browser p-1" data-bs-toggle="tooltip" data-bs-title="Show Context Menu on Right Click on Supported Sites."></i>
+        </div>
+
+        <div class="form-check form-switch pb-2">
             <input class="form-check-input" id="showUpdate" type="checkbox" role="switch">
             <label class="form-check-label" for="showUpdate">Show Release Notes on Update</label>
             <i class="fa-solid fa-circle-info p-1" data-bs-toggle="tooltip" data-bs-title="Show Release Notes on Version Update."></i>

@@ -16,6 +16,8 @@ chrome.storage.onChanged.addListener(onChanged)
 async function onInstalled(details) {
     console.log('onInstalled:', details)
     const options = await setDefaultOptions({
+        showPopup: true,
+        showCodeMobile: false,
         contextMenu: true,
         showUpdate: false,
         dotsColor: '#c987ff',

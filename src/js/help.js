@@ -30,10 +30,6 @@ async function domContentLoaded() {
     // noinspection ES6MissingAwait
     updateBrowser()
 
-    chrome.storage.sync.get(['options']).then((items) => {
-        console.debug('options:', items.options)
-    })
-
     const platform = await updatePlatform()
     console.debug('platform.os:', platform.os)
     if (platform.os === 'android') {
