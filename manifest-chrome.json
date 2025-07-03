@@ -7,7 +7,6 @@
       "description": "Activate Extension"
     }
   },
-  "permissions": ["declarativeContent"],
   "background": {
     "service_worker": "js/service-worker.js"
   },

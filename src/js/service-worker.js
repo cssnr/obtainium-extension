@@ -58,7 +58,6 @@ async function onInstalled(details) {
     const platform = await chrome.runtime.getPlatformInfo()
     console.debug('platform:', platform)
 
-    // TODO: This only disables the popup but it still shows as active...
     // if (chrome.declarativeContent) {
     //     addPageRules()
     // }
@@ -232,10 +231,21 @@ async function setDefaultOptions(defaultOptions) {
 // function addPageRules() {
 //     const pageUrlFilters = [
 //         {
-//             urlMatches: 'https:\\/\\/github\\.com\\/.*\\/.+',
-//             // hostEquals: 'github.com',
-//             // pathPrefix: '/',
-//             // pathContains: '/',
+//             // urlMatches: 'https:\\/\\/github\\.com\\/.*\\/.+',
+//             hostEquals: 'github.com',
+//             pathContains: '/',
+//         },
+//         {
+//             hostEquals: 'gitlab.com',
+//             pathContains: '/',
+//         },
+//         {
+//             hostEquals: 'forgejo.org',
+//             pathContains: '/',
+//         },
+//         {
+//             hostEquals: 'codeberg.org',
+//             pathContains: '/',
 //         },
 //     ]
 //     // noinspection JSIgnoredPromiseFromCall
