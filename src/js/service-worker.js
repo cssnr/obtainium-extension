@@ -70,7 +70,10 @@ async function onInstalled(details) {
 async function onStartup() {
     console.log('onStartup')
     // noinspection JSUnresolvedReference
-    if (typeof browser !== 'undefined') {
+    if (
+        typeof browser !== 'undefined' &&
+        typeof browser?.runtime?.getBrowserInfo === 'function'
+    ) {
         console.log('Firefox Startup Workarounds')
         const { options } = await chrome.storage.sync.get(['options'])
         console.debug('options:', options)
@@ -95,7 +98,7 @@ function setUninstallURL() {
 /**
  * On Clicked Callback
  * @function onClicked
- * @param {OnClickData} ctx
+ * @param {chrome.contextMenus.OnClickData} ctx
  * @param {chrome.tabs.Tab} tab
  */
 async function onClicked(ctx, tab) {

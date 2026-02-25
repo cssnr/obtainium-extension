@@ -30,7 +30,7 @@ document
 document
     .querySelectorAll('.form-control')
     .forEach((el) =>
-        el.addEventListener('input', () => el.classList.remove('is-invalid'))
+        el.addEventListener('input', () => el.classList.remove('is-invalid')),
     )
 
 document.getElementById('chrome-shortcuts').addEventListener('click', () => {
