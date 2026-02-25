@@ -70,7 +70,10 @@ async function onInstalled(details) {
 async function onStartup() {
     console.log('onStartup')
     // noinspection JSUnresolvedReference
-    if (typeof browser !== 'undefined') {
+    if (
+        typeof browser !== 'undefined' &&
+        typeof browser?.runtime?.getBrowserInfo === 'function'
+    ) {
         console.log('Firefox Startup Workarounds')
         const { options } = await chrome.storage.sync.get(['options'])
         console.debug('options:', options)
@@ -95,7 +98,7 @@ function setUninstallURL() {
 /**
  * On Clicked Callback
  * @function onClicked
- * @param {OnClickData} ctx
+ * @param {chrome.contextMenus.OnClickData} ctx
  * @param {chrome.tabs.Tab} tab
  */
 async function onClicked(ctx, tab) {
@@ -173,7 +176,7 @@ function createContextMenus() {
 /**
  * Add Context from Array
  * @function addContext
- * @param {[chrome.contextMenus.ContextType[],String,String,chrome.contextMenus.ContextItemType?]} context
+ * @param {[chrome.contextMenus.ContextType[],String,String,chrome.contextMenus.ContextType?]} context
  */
 function addContext(context) {
     // console.debug('addContext:', context)
@@ -185,11 +188,11 @@ function addContext(context) {
     ]
     try {
         if (context[1] === 'separator') {
-            const id = Math.random().toString().substring(2, 7)
-            context[1] = `${id}`
+            context[1] = Math.random().toString().substring(2, 7)
             context.push('separator', 'separator')
         }
         // console.debug('menus.create:', context)
+        // noinspection JSCheckFunctionSignatures
         chrome.contextMenus.create({
             documentUrlPatterns,
             contexts: context[0],

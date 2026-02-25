@@ -38,7 +38,7 @@ gulp.task('fontawesome', () => {
             {
                 base: 'node_modules/@fortawesome/fontawesome-free',
                 encoding: false,
-            }
+            },
         )
         .pipe(gulp.dest('src/dist/fontawesome'))
 })
@@ -63,6 +63,6 @@ gulp.task(
         'coloris',
         'fontawesome',
         'jquery',
-        'qr-code-styling'
-    )
+        'qr-code-styling',
+    ),
 )

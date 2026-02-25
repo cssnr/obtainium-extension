@@ -26,10 +26,10 @@ export async function saveOptions(event) {
     } else if (event.target.type === 'checkbox') {
         value = event.target.checked
     } else if (event.target.type === 'number') {
-        const number = parseFloat(event.target.value)
-        let min = parseFloat(event.target.min)
-        let max = parseFloat(event.target.max)
-        if (!isNaN(number) && number >= min && number <= max) {
+        const number = Number.parseFloat(event.target.value)
+        let min = Number.parseFloat(event.target.min)
+        let max = Number.parseFloat(event.target.max)
+        if (!Number.isNaN(number) && number >= min && number <= max) {
             event.target.value = number.toString()
             value = number
         } else {
@@ -39,12 +39,12 @@ export async function saveOptions(event) {
     } else {
         value = event.target.value
     }
-    if (value !== undefined) {
+    if (value === undefined) {
+        console.warn(`No Value for key: ${key}`)
+    } else {
         options[key] = value
         console.log(`Set %c${key}:`, 'color: Khaki', value)
         await chrome.storage.sync.set({ options })
-    } else {
-        console.warn(`No Value for key: ${key}`)
     }
 }
 
@@ -56,7 +56,7 @@ export async function saveOptions(event) {
 export async function updateOptions(options) {
     console.debug('updateOptions:', options)
     for (let [key, value] of Object.entries(options)) {
-        if (typeof value === 'undefined') {
+        if (value === undefined) {
             console.warn('Value undefined for key:', key)
             continue
         }
@@ -80,7 +80,7 @@ export async function updateOptions(options) {
         if (el.dataset.related) {
             hideShowElement(`#${el.dataset.related}`, value)
         }
-        if (typeof el.dataset.coloris !== 'undefined') {
+        if (el.dataset.coloris !== undefined) {
             console.debug('dataset.coloris:', el.id)
             el.dispatchEvent(new Event('input', { bubbles: true }))
         }
@@ -113,14 +113,10 @@ function hideShowElement(selector, show, speed = 'fast') {
  */
 export async function linkClick(event, close = false) {
     console.debug('linkClick:', close, event)
-    const currentTarget = event.currentTarget
-    event.preventDefault()
-    const href = currentTarget.getAttribute('href').replace(/^\.+/g, '')
+    const target = event.currentTarget
+    const href = target.getAttribute('href').replace(/^\.+/, '')
     console.debug('href:', href)
-    if (
-        currentTarget.dataset.clipboardText ||
-        currentTarget.dataset.clipboardTarget
-    ) {
+    if (target.dataset.clipboardText || target.dataset.clipboardTarget) {
         console.debug('%c return on dataset.clipboardX', 'color: Yellow')
         return
     }
@@ -128,7 +124,9 @@ export async function linkClick(event, close = false) {
     if (href.startsWith('#')) {
         console.debug('return on anchor link')
         return
-    } else if (href.endsWith('html/options.html')) {
+    }
+    event.preventDefault()
+    if (href.endsWith('html/options.html')) {
         await chrome.runtime.openOptionsPage()
         if (close) window.close()
         return
@@ -156,12 +154,12 @@ export async function activateOrOpen(url, open = true) {
     console.debug('tabs:', tabs)
     for (const tab of tabs) {
         if (tab.url === url) {
-            console.debug('found tab in tabs:', tab)
+            console.debug('%cTab found, activating:', 'color: Lime', tab)
             return await chrome.tabs.update(tab.id, { active: true })
         }
     }
     if (open) {
-        console.debug('tab not found, opening url:', url)
+        console.debug('%cTab not found, opening url:', 'color: Yellow', url)
         return await chrome.tabs.create({ active: true, url })
     }
     console.warn('tab not found and open not set!')
@@ -169,7 +167,6 @@ export async function activateOrOpen(url, open = true) {
 
 /**
  * Update DOM with Manifest Details
- * @function updateManifest
  * @function updateManifest
  */
 export async function updateManifest() {
@@ -193,13 +190,14 @@ export async function updateManifest() {
 export async function updateBrowser() {
     let selector = '.chrome'
     // noinspection JSUnresolvedReference
-    if (typeof browser !== 'undefined') {
+    if (
+        typeof browser !== 'undefined' &&
+        typeof browser?.runtime?.getBrowserInfo === 'function'
+    ) {
         selector = '.firefox'
     }
     console.debug('updateBrowser:', selector)
-    document
-        .querySelectorAll(selector)
-        .forEach((el) => el.classList.remove('d-none'))
+    document.querySelectorAll(selector).forEach((el) => el.classList.remove('d-none'))
 }
 
 /**
@@ -210,11 +208,11 @@ export async function updatePlatform() {
     const platform = await chrome.runtime.getPlatformInfo()
     console.debug('updatePlatform:', platform)
     const splitCls = (cls) => cls.split(' ').filter(Boolean)
-    if (platform.os === 'android') {
+    if (platform.os === 'android' && typeof document !== 'undefined') {
         // document.querySelectorAll('[class*="mobile-"]').forEach((el) => {
         document
             .querySelectorAll(
-                '[data-mobile-add],[data-mobile-remove],[data-mobile-replace]'
+                '[data-mobile-add],[data-mobile-remove],[data-mobile-replace]',
             )
             .forEach((el) => {
                 if (el.dataset.mobileAdd) {
@@ -246,6 +244,7 @@ export async function updatePlatform() {
 
 /**
  * Open Popup Click Callback
+ * NOTE: Requires Chrome>=127
  * @function openPopup
  * @param {Event} [event]
  */
@@ -254,6 +253,7 @@ export async function openPopup(event) {
     event?.preventDefault()
     // Note: This fails if popup is already open (ex. double clicks)
     try {
+        // Note: chrome.pageAction is legacy firefox and not required
         if (chrome.pageAction) {
             // noinspection JSUnresolvedReference
             chrome.pageAction.openPopup()
