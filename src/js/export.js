@@ -53,7 +53,7 @@ export async function saveOptions(event) {
  * @function initOptions
  * @param {Object} options
  */
-export function updateOptions(options) {
+export async function updateOptions(options) {
     console.debug('updateOptions:', options)
     for (let [key, value] of Object.entries(options)) {
         if (value === undefined) {
@@ -80,7 +80,7 @@ export function updateOptions(options) {
         if (el.dataset.related) {
             hideShowElement(`#${el.dataset.related}`, value)
         }
-        if (typeof el.dataset.coloris !== 'undefined') {
+        if (el.dataset.coloris !== undefined) {
             console.debug('dataset.coloris:', el.id)
             el.dispatchEvent(new Event('input', { bubbles: true }))
         }
