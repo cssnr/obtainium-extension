@@ -22,10 +22,14 @@
 [![Discord](https://img.shields.io/discord/899171661457293343?logo=discord&logoColor=white&label=discord&color=7289da)](https://discord.gg/wXy6m2X8wY)
 [![Ko-fi](https://img.shields.io/badge/Ko--fi-72a5f2?logo=kofi&label=support)](https://ko-fi.com/cssnr)
 
+> [!CAUTION]  
+> :rotating_light: **Free and Open-Source Android is under threat.**  
+> Google will turn Android into a locked-down platform, restricting your essential freedom to install apps of your choice. Make your voice heard – [Keep Android Open](https://keepandroidopen.org/).
+
 # Obtainium Extension
 
-<a title="Obtainium Extension" href="https://github.com/cssnr/obtainium-extension?tab=readme-ov-file#readme" target="_blank">
-<img alt="Obtainium Extension" align="right" width="128" height="auto" src="https://raw.githubusercontent.com/cssnr/obtainium-extension/refs/heads/master/src/images/logo128.png"></a>
+<a title="Obtainium" href="https://obtainium.imranr.dev/" target="_blank">
+<img alt="Obtainium" align="right" width="128" height="auto" src="https://raw.githubusercontent.com/cssnr/obtainium-extension/refs/heads/master/src/images/logo128.png"></a>
 
 - [Install](#install)
 - [Features](#features)
