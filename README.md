@@ -24,8 +24,8 @@
 
 # Obtainium Extension
 
-<a title="Auto Auth" href="https://github.com/cssnr/obtainium-extension#readme-ov-file" target="_blank">
-<img alt="Auto Auth" align="right" width="128" height="auto" src="https://raw.githubusercontent.com/cssnr/obtainium-extension/refs/heads/master/src/images/logo128.png"></a>
+<a title="Obtainium Extension" href="https://github.com/cssnr/obtainium-extension?tab=readme-ov-file#readme" target="_blank">
+<img alt="Obtainium Extension" align="right" width="128" height="auto" src="https://raw.githubusercontent.com/cssnr/obtainium-extension/refs/heads/master/src/images/logo128.png"></a>
 
 - [Install](#install)
 - [Features](#features)
